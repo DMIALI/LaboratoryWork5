@@ -1,6 +1,7 @@
 package org.example;
 
-import Commands.Command;
+import org.example.Commands.*;
+
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
@@ -15,11 +16,10 @@ public class СontrolСenter {
             System.out.println(com);
             try {
                 if (com.split(" ").length == 1) {
-                    Class clazz = Class.forName("Commands." + com);
-                    System.out.println(clazz.getName());
+                    Class clazz = Class.forName("org.example.Commands." + com);
                     Command instance = (Command) clazz.getConstructor().newInstance();
                 } else {
-                    Class clazz = Class.forName("Commands." + com.split(" ")[0]);
+                    Class clazz = Class.forName("org.example.Commands." + com.split(" ")[0]);
                     System.out.println(clazz.getName());
                     Command instance = (Command) clazz.getConstructor(String.class).newInstance(com.split(" ")[1]);
                 }
